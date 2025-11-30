@@ -1,50 +1,143 @@
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+/* Couleurs principales */
+:root {
+  --violet-aizen: #5e17eb;
+  --noir: #0a0a0a;
+  --blanc: #ffffff;
+  --gris-clair: #e7e7e7;
 }
 
-/* Header */
-header {
-    background-color: black; /* Couleur de fond du header */
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
+/* Reset simple */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
-header .logo a {
-    color: white;
-    font-size: 20px;
-    text-decoration: none;
+body {
+  background: var(--noir);
+  color: var(--blanc);
 }
 
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
+/* HEADER */
+.header {
+  width: 100%;
+  padding: 15px 40px;
+  background: rgba(10, 10, 10, 0.9);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
 }
 
-nav ul li {
-    margin-right: 20px;
+.logo-svg rect {
+  fill: var(--violet-aizen);
+  transition: 0.4s;
 }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 5px 10px;
+/* Animation logo au hover */
+.logo-svg:hover {
+  transform: scale(1.15) rotate(8deg);
+  transition: 0.4s ease;
 }
 
-nav ul li a:hover {
-    background-color: #555; /* Changer la couleur au survol */
-    border-radius: 5px;
+/* Animation logo au clic */
+.logo-svg:active {
+  transform: scale(0.9) rotate(-5deg);
 }
 
-.logo{
-    background-color: white;
-    
-    
+/* NAV */
+.nav a {
+  color: var(--blanc);
+  text-decoration: none;
+  margin-left: 25px;
+  font-size: 1.05rem;
+  transition: 0.3s;
+  position: relative;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--violet-aizen);
+  transition: 0.3s;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* HERO */
+.hero {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+  background: linear-gradient(135deg, #0a0a0a, #1a0f2e 40%, var(--violet-aizen));
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  opacity: 0.85;
+  margin-bottom: 30px;
+}
+
+.cta {
+  padding: 12px 30px;
+  background: var(--violet-aizen);
+  color: var(--blanc);
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  transition: 0.3s;
+}
+
+.cta:hover {
+  background: #4c12c7;
+  transform: scale(1.05);
+}
+
+/* RESPONSIVE TABLETTE */
+@media (max-width: 900px) {
+  .nav a {
+    margin-left: 15px;
+    font-size: 1rem;
+  }
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+}
+
+/* RESPONSIVE TELEPHONE */
+@media (max-width: 600px) {
+  .header {
+    padding: 12px 20px;
+  }
+  .nav {
+    display: none; /* on peut activer un menu burger après */
+  }
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
 }
